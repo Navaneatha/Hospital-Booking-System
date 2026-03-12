@@ -7,6 +7,10 @@ import Doctors from "./pages/Doctors";
 import BookAppointment from "./pages/BookAppointment";
 import DoctorSchedule from "./pages/DoctorSchedule";
 import AdminDashboard from "./pages/AdminDashboard";
+import Login from "./pages/Login";
+import PatientRegister from "./pages/PatientRegister";
+import PatientDashboard from "./pages/PatientDashboard";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -19,6 +23,21 @@ function App() {
         <Route path="/book/:doctorId" element={<BookAppointment />} />
         <Route path="/schedule/:doctorId" element={<DoctorSchedule />} />
         <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/login" element={<Login />} />
+
+<Route path="/register" element={<PatientRegister/>}/>
+
+<Route
+path="/dashboard"
+element={
+<ProtectedRoute>
+<PatientDashboard/>
+</ProtectedRoute>
+}
+/>
+
+
+
       </Routes>
     </Router>
   );

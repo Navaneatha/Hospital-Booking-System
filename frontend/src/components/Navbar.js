@@ -24,6 +24,18 @@ function Navbar() {
         <Button color="inherit" component={Link} to="/admin">
           Admin
         </Button>
+        <Typography sx={{flexGrow:1}}>
+Hospital System
+</Typography>
+
+<Button color="inherit" href="/login">
+Login
+</Button>
+
+<Button color="inherit" href="/register">
+Register
+</Button>
+        
 
       </Toolbar>
 

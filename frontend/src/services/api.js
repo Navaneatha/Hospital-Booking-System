@@ -13,3 +13,11 @@ export const bookAppointment = (appointment) =>
 
 export const getDoctorAppointments = (doctorId) =>
   API.get(`/appointments/doctor/${doctorId}`);
+// Patient
+export const registerPatient = (data) =>
+  API.post("/patients/register", data);
+
+export const loginPatient = (data) =>
+  API.post("/auth/login", data);
+
+export default API;
