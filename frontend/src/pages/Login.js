@@ -1,75 +1,144 @@
-import React, {useState} from "react";
-import {Container,TextField,Button,Typography,Paper} from "@mui/material";
-import API from "../services/api";
+// import React, {useState} from "react";
+// import {Container,TextField,Button,Typography,Paper} from "@mui/material";
+// import API from "../services/api";
 
-function Login(){
+// function Login(){
 
-const [username,setUsername]=useState("");
-const [password,setPassword]=useState("");
+// const [username,setUsername]=useState("");
+// const [password,setPassword]=useState("");
 
-const handleLogin=async()=>{
+// const handleLogin=async()=>{
 
- try{
+//  try{
 
- const res=await API.post("/auth/login",{
-  username,
-  password
- })
+//  const res=await API.post("/auth/login",{
+//   username,
+//   password
+//  })
 
- localStorage.setItem("token",res.data.token)
+//  localStorage.setItem("token",res.data.token)
 
- alert("Login Successful")
+//  alert("Login Successful")
 
- window.location="/dashboard"
+//  window.location="/dashboard"
 
- }catch(err){
+//  }catch(err){
 
- alert("Invalid Login")
+//  alert("Invalid Login")
 
- }
+//  }
 
+// }
+
+// return(
+
+// <Container maxWidth="sm">
+
+// <Paper sx={{padding:4,marginTop:8}}>
+
+// <Typography variant="h4" align="center">
+// Patient Login
+// </Typography>
+
+// <TextField
+// label="Username"
+// fullWidth
+// margin="normal"
+// onChange={(e)=>setUsername(e.target.value)}
+// />
+
+// <TextField
+// label="Password"
+// type="password"
+// fullWidth
+// margin="normal"
+// onChange={(e)=>setPassword(e.target.value)}
+// />
+
+// <Button
+// variant="contained"
+// fullWidth
+// sx={{marginTop:2}}
+// onClick={handleLogin}
+// >
+// Login
+// </Button>
+
+// </Paper>
+
+// </Container>
+
+// )
+
+// }
+
+// export default Login
+import { useState } from "react";
+import { login } from "../services/api";
+import { Container, TextField, Button, Typography, Paper } from "@mui/material";
+
+function Login() {
+
+  const [username,setUsername] = useState("");
+  const [password,setPassword] = useState("");
+
+  const handleLogin = async () => {
+
+    try{
+
+      const res = await login({username,password});
+
+      localStorage.setItem("token",res.data);
+
+      alert("Login Successful");
+
+    }catch(err){
+
+      alert("Invalid Credentials");
+
+    }
+
+  };
+
+  return (
+
+    <Container maxWidth="sm">
+
+      <Paper elevation={4} sx={{padding:4,marginTop:10}}>
+
+        <Typography variant="h4" gutterBottom>
+          Login
+        </Typography>
+
+        <TextField
+          label="Username"
+          fullWidth
+          margin="normal"
+          onChange={(e)=>setUsername(e.target.value)}
+        />
+
+        <TextField
+          label="Password"
+          type="password"
+          fullWidth
+          margin="normal"
+          onChange={(e)=>setPassword(e.target.value)}
+        />
+
+        <Button
+          variant="contained"
+          fullWidth
+          sx={{marginTop:2}}
+          onClick={handleLogin}
+        >
+          Login
+        </Button>
+
+      </Paper>
+
+    </Container>
+
+  );
 }
 
-return(
-
-<Container maxWidth="sm">
-
-<Paper sx={{padding:4,marginTop:8}}>
-
-<Typography variant="h4" align="center">
-Patient Login
-</Typography>
-
-<TextField
-label="Username"
-fullWidth
-margin="normal"
-onChange={(e)=>setUsername(e.target.value)}
-/>
-
-<TextField
-label="Password"
-type="password"
-fullWidth
-margin="normal"
-onChange={(e)=>setPassword(e.target.value)}
-/>
-
-<Button
-variant="contained"
-fullWidth
-sx={{marginTop:2}}
-onClick={handleLogin}
->
-Login
-</Button>
-
-</Paper>
-
-</Container>
-
-)
-
-}
-
-export default Login
+export default Login;
