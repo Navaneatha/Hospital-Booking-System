@@ -8,6 +8,7 @@ RUN npm install
 
 # Copy the rest of the frontend source code and build it
 COPY frontend/ ./
+ENV CI=false
 RUN npm run build
 
 
