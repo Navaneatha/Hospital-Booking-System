@@ -23,6 +23,9 @@ public class DoctorService {
     }
 
     public void deleteDoctor(Long id){
+        if (!repo.existsById(id)) {
+            throw new com.hospital.exception.ResourceNotFoundException("Doctor not found with id: " + id);
+        }
         repo.deleteById(id);
     }
 

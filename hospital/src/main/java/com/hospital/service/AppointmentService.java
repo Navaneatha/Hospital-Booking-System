@@ -25,7 +25,7 @@ public class AppointmentService {
                 );
 
         if(exists){
-            throw new RuntimeException("Time slot already booked");
+            throw new com.hospital.exception.TimeSlotAlreadyBookedException("Time slot already booked");
         }
 
         Appointment a = new Appointment();
